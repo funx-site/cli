@@ -1,0 +1,47 @@
+{
+  "name": "@funx-site/cli",
+  "version": "0.0.1",
+  "description": "Funx CLI - deploy Workers-style handlers to https://<name>.funx.run",
+  "type": "module",
+  "main": "./dist/cli.js",
+  "bin": {
+    "funx": "bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "prepublishOnly": "npm run build",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "funx",
+    "cli",
+    "workers",
+    "deploy"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funx-site/cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/funx-site/cli/issues"
+  },
+  "homepage": "https://github.com/funx-site/cli#readme",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "typescript": "^5.3.3"
+  }
+}
