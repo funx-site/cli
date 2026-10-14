@@ -51,7 +51,9 @@ test("--help describes the public worker CLI", () => {
   assert.match(text, /\bdev\b/);
   assert.match(text, /\bdeploy\b/);
   assert.match(text, /\blist\|ls\b/);
-  assert.doesNotMatch(text, /router-deploy|api-build|runtime-deploy|TENCENTCLOUD|SECRET_KEY|deploy-keys/);
+  assert.match(text, /不在这里/);
+  assert.doesNotMatch(result.stdout, /^\s+(router-deploy|api-build|runtime-deploy|keygen)\b/m);
+  assert.doesNotMatch(text, /TENCENTCLOUD|SECRET_KEY|deploy-keys/);
 });
 
 test("no args prints help and exits 0", () => {
@@ -108,7 +110,7 @@ test("deploy --help exits 0 before the unwired action", () => {
   const result = run(["deploy", "--help"]);
   assert.equal(result.status, 0, result.stderr);
   assert.match(result.stdout, /--name/);
-  assert.doesNotMatch(`${result.stdout}\n${result.stderr}`, /尚未接通/);
+  assert.doesNotMatch(`${result.stdout}\n${result.stderr}`, /不会访问云端/);
 });
 
 test("sources do not call the network or embed operator credentials", () => {
